@@ -26,7 +26,7 @@
             createList(){
                 store.loading = true
                 if(store.archetype!=""){
-                    let filteredUrl = store.apiUrl + store.archetype + "&num=20&offset=0"
+                    let filteredUrl = store.apiUrl + store.archetype
                     axios
                     .get(filteredUrl)
                     .then ( res => {
