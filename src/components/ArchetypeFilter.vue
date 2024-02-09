@@ -32,9 +32,10 @@
                     .get(filteredUrl)
                     .then ( res => {
                         store.cardList = res.data
-                        console.log(store.cardList.data[0].attribute)
                     })
                     store.loading = false
+                } else {
+                    store.cardList = []
                 }
             }
         },
