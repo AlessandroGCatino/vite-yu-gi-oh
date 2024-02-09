@@ -9,7 +9,7 @@
 </template>
 
 <script>
-    import axios from 'axios'
+
     import { store } from './store'
     import HeaderYugi from "./components/HeaderYugi.vue"
     import ArchetypeFilter from "./components/ArchetypeFilter.vue"

@@ -10,6 +10,14 @@
             <div class="founded">
                 <h6>Found {{ store.cardList.data.length }} cards</h6>
             </div>
+            <div class="griglia d-flex flex-wrap">
+                <CardDetails v-for="(element, index) in store.cardList.data" :key="index"
+                :imgSource="element.card_images[0].image_url"
+                :cardName="element.name"
+                :deckArchetype="element.archetype"
+                />
+            </div>
+            
         </div>
     </div>
 
@@ -17,11 +25,14 @@
 </template>
 
 <script>
-
+    import CardDetails from "./CardDetails.vue"
     import { store } from "../store";
 
     export default{
         name: "CardList",
+        components:{
+            CardDetails
+        },
         data(){
             return{
                 store,
@@ -47,6 +58,9 @@
         background-color: #212529;
         color: white;
         padding: 10px;
+    }
+    .griglia{
+        gap: 15px;
     }
 
 </style>

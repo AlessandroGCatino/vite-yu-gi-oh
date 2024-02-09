@@ -27,7 +27,6 @@
                 store.loading = true
                 if(store.archetype!=""){
                     let filteredUrl = store.apiUrl + store.archetype + "&num=20&offset=0"
-                    console.log(filteredUrl)
                     axios
                     .get(filteredUrl)
                     .then ( res => {
