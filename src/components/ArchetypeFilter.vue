@@ -2,10 +2,11 @@
 
     <div class="container">
             <select class="form-select" v-model="store.archetype" @change="createList()">
-                <option  value="">Seleziona un archetipo...</option>
-                <option value="Blue-Eyes">Blue-Eyes</option>
+                <option disabled value="">Seleziona un archetipo...</option>
+                <option v-for="(element, index) in archetypes" :key="index">{{ element.archetype_name }}</option>
+                <!-- <option value="Blue-Eyes">Blue-Eyes</option>
                 <option value="Dark Magician">Dark Magician</option>
-                <option value="Exodia">Exodia</option>
+                <option value="Exodia">Exodia</option> -->
             </select>
         </div>
 
@@ -20,13 +21,14 @@
         data(){
             return{
                 store,
+                archetypes: []
             }
         },
         methods: {
             createList(){
                 store.loading = true
                 if(store.archetype!=""){
-                    let filteredUrl = store.apiUrl + store.archetype
+                    let filteredUrl = store.apiUrl + `?archetype=${store.archetype}`
                     axios
                     .get(filteredUrl)
                     .then ( res => {
@@ -39,7 +41,11 @@
             }
         },
         mounted(){
-            this.createList
+            axios.get("https://db.ygoprodeck.com/api/v7/archetypes.php")
+            .then(result => {
+                this.archetypes = result.data
+            })
+            this.createList()
         }
     }
 </script>

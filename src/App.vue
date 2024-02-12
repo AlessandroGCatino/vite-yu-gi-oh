@@ -30,9 +30,7 @@
         methods: {
             
         },
-        mounted(){
-            this.createList
-        }
+        
     }
 
 
